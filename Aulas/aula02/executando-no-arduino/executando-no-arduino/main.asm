@@ -1,0 +1,2 @@
+sbi DDRB, PINB5
+cbi PORTB, PINB5
