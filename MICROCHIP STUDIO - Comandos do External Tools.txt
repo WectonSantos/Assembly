@@ -1,3 +1,3 @@
 Title:
-Command: C:\Users\unisanta\AppData\Local\Arduino15\packages\arduino\tools\avrdude\6.3.0-arduino17\bin\avrdude.exe
-Arguments: -C C:\Users\unisanta\AppData\Local\Arduino15\packages\arduino\tools\avrdude\6.3.0-arduino17\etc\avrdude.conf -c arduino -p m328p -P COM5 -b 115200 -D -U flash:w:"$(ProjectDir)Debug\$(TargetName).hex":i
+Command: C:\Users\Wecton\AppData\Local\Arduino15\packages\arduino\tools\avrdude\6.3.0-arduino17\bin\avrdude.exe
+Arguments: -C C:\Users\Wecton\AppData\Local\Arduino15\packages\arduino\tools\avrdude\6.3.0-arduino17\etc\avrdude.conf -c arduino -p m328p -P COM3 -b 115200 -D -U flash:w:"$(ProjectDir)Debug\$(TargetName).hex":i

@@ -1,0 +1,38 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>C:\Users\Wecton\Desktop\Assembly\Projeto\laser\laser\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\Wecton\Desktop\Assembly\Projeto\laser\laser\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc</FILE>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\Wecton\Desktop\Assembly\Projeto\laser\laser\Debug\laser.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>laser.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>laser.map</FILE>
+  <FILE>laser.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <RESET><FILE>C:\Users\Wecton\Desktop\Assembly\Projeto\laser\laser\main.asm</FILE><LINE>12</LINE></RESET>
+  <main><FILE>C:\Users\Wecton\Desktop\Assembly\Projeto\laser\laser\main.asm</FILE><LINE>32</LINE></main>
+  <_delay><FILE>C:\Users\Wecton\Desktop\Assembly\Projeto\laser\laser\main.asm</FILE><LINE>96</LINE></_delay>
+  <AGUARDA_ADC><FILE>C:\Users\Wecton\Desktop\Assembly\Projeto\laser\laser\main.asm</FILE><LINE>43</LINE></AGUARDA_ADC>
+  <MUDANCA><FILE>C:\Users\Wecton\Desktop\Assembly\Projeto\laser\laser\main.asm</FILE><LINE>68</LINE></MUDANCA>
+  <ACENDE_LED><FILE>C:\Users\Wecton\Desktop\Assembly\Projeto\laser\laser\main.asm</FILE><LINE>78</LINE></ACENDE_LED>
+  <APAGA_LED><FILE>C:\Users\Wecton\Desktop\Assembly\Projeto\laser\laser\main.asm</FILE><LINE>82</LINE></APAGA_LED>
+  <ACENDE_LASER><FILE>C:\Users\Wecton\Desktop\Assembly\Projeto\laser\laser\main.asm</FILE><LINE>87</LINE></ACENDE_LASER>
+  <APAGA_LASER><FILE>C:\Users\Wecton\Desktop\Assembly\Projeto\laser\laser\main.asm</FILE><LINE>91</LINE></APAGA_LASER>
+  <loop1><FILE>C:\Users\Wecton\Desktop\Assembly\Projeto\laser\laser\main.asm</FILE><LINE>98</LINE></loop1>
+  <loop2><FILE>C:\Users\Wecton\Desktop\Assembly\Projeto\laser\laser\main.asm</FILE><LINE>100</LINE></loop2>
+ </LABELS>
+</ASSEMBLER_INFO>
