@@ -23,8 +23,8 @@
   <FILE>sensor-de-chuva-hw280.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <loop><FILE>C:\Users\Wecton\Desktop\Assembly\Projeto\sensor-de-chuva-hw280\sensor-de-chuva-hw280\main.asm</FILE><LINE>11</LINE></loop>
-  <liga_led><FILE>C:\Users\Wecton\Desktop\Assembly\Projeto\sensor-de-chuva-hw280\sensor-de-chuva-hw280\main.asm</FILE><LINE>20</LINE></liga_led>
-  <desliga_led><FILE>C:\Users\Wecton\Desktop\Assembly\Projeto\sensor-de-chuva-hw280\sensor-de-chuva-hw280\main.asm</FILE><LINE>16</LINE></desliga_led>
+  <RESET><FILE>C:\Users\Wecton\Desktop\Assembly\Projeto\sensor-de-chuva-hw280\sensor-de-chuva-hw280\main.asm</FILE><LINE>6</LINE></RESET>
+  <LOOP><FILE>C:\Users\Wecton\Desktop\Assembly\Projeto\sensor-de-chuva-hw280\sensor-de-chuva-hw280\main.asm</FILE><LINE>14</LINE></LOOP>
+  <LED_OFF><FILE>C:\Users\Wecton\Desktop\Assembly\Projeto\sensor-de-chuva-hw280\sensor-de-chuva-hw280\main.asm</FILE><LINE>22</LINE></LED_OFF>
  </LABELS>
 </ASSEMBLER_INFO>
