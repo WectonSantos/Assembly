@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\Wecton\Desktop\Assembly\Projeto\AssemblerApplication1\AssemblerApplication1\main.asm Thu May 15 01:17:39 2025
+AVRASM ver. 2.2.8  C:\Users\Wecton\Desktop\Assembly\Projeto\LDR+Buzzer\LDR+Buzzer\main.asm Wed May 21 00:36:55 2025
 
 
 EQU  SIGNATURE_000 0000001e
@@ -695,5 +695,10 @@ EQU  ACIaddr      0000002e
 EQU  TWIaddr      00000030
 EQU  SPMRaddr     00000032
 EQU  INT_VECTORS_SIZE 00000034
+EQU  LED          00000005
+EQU  LUM_LIMIAR   00000064
 CSEG RESET        00000001
-CSEG LOOP         00000005
+CSEG LOOP         00000009
+CSEG AGUARDA_ADC  0000000e
+CSEG ACENDE_LED   0000001f
+CSEG APAGA_LED    00000021
