@@ -4,7 +4,7 @@
     rjmp RESET
 
 ; =========================
-; Inicialização
+; InicializaÃ§Ã£o
 ; =========================
 RESET:
     ; Inicializa a pilha
@@ -13,14 +13,14 @@ RESET:
     ldi r16, HIGH(RAMEND)
     out SPH, r16
 
-    ; Configura PB2 (buzzer) como saída
+    ; Configura PB2 (buzzer) como saÃ­da
     sbi DDRB, PB2
 
     ; Configura PD2 (sensor de chuva) como entrada com pull-up
     cbi DDRD, PD2
     sbi PORTD, PD2
 
-    ; Configura o ADC (referência AVcc, canal ADC0)
+    ; Configura o ADC (referÃªncia AVcc, canal ADC0)
     ldi r16, (1 << REFS0)
     sts ADMUX, r16
 
@@ -32,11 +32,11 @@ RESET:
 ; Loop principal
 ; =========================
 MAIN_LOOP:
-    ; Verifica sensor de chuva no PD2 (nível baixo = chuva)
+    ; Verifica sensor de chuva no PD2 (nÃ­vel baixo = chuva)
     sbis PIND, PD2
     rjmp CHUVA_ALERTA
 
-    ; Inicia conversão do ADC
+    ; Inicia conversÃ£o do ADC
     lds r16, ADCSRA
     ori r16, (1 << ADSC)
     sts ADCSRA, r16
@@ -51,7 +51,7 @@ WAIT_ADC:
     ori r16, (1 << ADIF)
     sts ADCSRA, r16
 
-    ; Lê o valor do ADC (10 bits)
+    ; LÃª o valor do ADC (10 bits)
     lds r18, ADCL
     lds r19, ADCH
 
@@ -62,7 +62,7 @@ WAIT_ADC:
     cpc r19, r21
     brcc SEM_BUZZER      ; Se ADC >= 500, pula buzzer
 
-    ; Luz fraca ? toca buzzer 500ms
+    ; Luz fraca â†’ toca buzzer 500ms
     sbi PORTB, PB2
     rcall DELAY_500MS
     cbi PORTB, PB2
