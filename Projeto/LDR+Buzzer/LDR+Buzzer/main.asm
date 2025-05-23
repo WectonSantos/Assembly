@@ -1,18 +1,19 @@
-.include "m328pdef.inc"     ; Arquivo de definição para ATmega328P
+.include "m328pdef.inc"
 
 .equ LED = 5                ; PORTB5 (pino digital 13)
 .equ BUZZER = 2             ; PORTB2 (pino digital 10)
-.equ LUM_LIMIAR = 100       ; Limiar de luminosidade
+.equ LUM_LIMIAR_L = 0x20    ; Parte baixa de 800
+.equ LUM_LIMIAR_H = 0x03    ; Parte alta de 800
 
 .org 0x0000
-    rjmp RESET              ; Salto para a rotina principal
+    rjmp RESET
 
 RESET:
     ; Configura LED e BUZZER como saída
     ldi r16, (1 << LED) | (1 << BUZZER)
     out DDRB, r16
 
-    ; Configura ADC (referência AVcc, canal ADC0 para LDR)
+    ; Configura ADC: referência AVcc, canal ADC0
     ldi r16, (1 << REFS0)
     sts ADMUX, r16
 
@@ -20,58 +21,63 @@ RESET:
     ldi r16, (1 << ADEN) | (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0)
     sts ADCSRA, r16
 
-LOOP:
-    ; Inicia conversão do ADC
+MAIN_LOOP:
+    ; Inicia a conversão ADC
     lds r17, ADCSRA
     ori r17, (1 << ADSC)
     sts ADCSRA, r17
 
-AGUARDA_ADC:
+WAIT_ADC:
     lds r17, ADCSRA
     sbrs r17, ADIF
-    rjmp AGUARDA_ADC
+    rjmp WAIT_ADC
 
-    ; Leitura do valor ADC
-    lds r18, ADCL
-    lds r19, ADCH
+    ; Lê o valor do ADC (10 bits)
+    lds r18, ADCL        ; LSB
+    lds r19, ADCH        ; MSB
 
     ; Limpa a flag ADIF
     lds r17, ADCSRA
     ori r17, (1 << ADIF)
     sts ADCSRA, r17
 
-    ; Compara valor com o limiar
-    ldi r20, LUM_LIMIAR
-    cp r18, r20
-    brlo ACENDE_LED_BUZZER
-    rjmp APAGA_TUDO
+    ; Compara com 800 (0x0320)
+    ldi r20, LUM_LIMIAR_L
+    ldi r21, LUM_LIMIAR_H
 
-ACENDE_LED_BUZZER:
+    cp r19, r21          ; Compara MSB (ADCH)
+    brlo ABAIXO_LIMIAR   ; Se menor, aciona
+    brne ACIMA_LIMIAR    ; Se maior, ignora
+
+    cp r18, r20          ; Se MSB igual, compara LSB (ADCL)
+    brlo ABAIXO_LIMIAR
+    rjmp ACIMA_LIMIAR
+
+ABAIXO_LIMIAR:
     sbi PORTB, LED
 
-    ; --- Som de apito simples ---
-    ldi r21, 50          ; Número de ciclos de som
-TOCA_SOM:
-    sbi PORTB, BUZZER    ; Liga buzzer
+    ; Toca o buzzer
+    ldi r22, 50
+TOCA_BUZZER:
+    sbi PORTB, BUZZER
     rcall DELAY_CURTO
-    cbi PORTB, BUZZER    ; Desliga buzzer
+    cbi PORTB, BUZZER
     rcall DELAY_CURTO
-    dec r21
-    brne TOCA_SOM
-    ; --- fim som ---
+    dec r22
+    brne TOCA_BUZZER
 
-    rjmp LOOP
+    rjmp MAIN_LOOP
 
-APAGA_TUDO:
+ACIMA_LIMIAR:
     cbi PORTB, LED
     cbi PORTB, BUZZER
-    rjmp LOOP
+    rjmp MAIN_LOOP
 
-; Rotina de delay simples (ajuste conforme necessário)
+; Delay simples
 DELAY_CURTO:
-    ldi r22, 200
+    ldi r23, 200
 DELAY_LOOP:
     nop
-    dec r22
+    dec r23
     brne DELAY_LOOP
     ret

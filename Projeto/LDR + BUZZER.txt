@@ -1,0 +1,84 @@
+.include "m328pdef.inc"
+
+.org 0x00
+rjmp RESET
+
+RESET:
+    ; Inicialização da stack
+    ldi r16, LOW(RAMEND)
+    out SPL, r16
+    ldi r16, HIGH(RAMEND)
+    out SPH, r16
+
+    ; Configurar PORTB2 como saída (buzzer)
+    sbi DDRB, PB2     ; DDRB |= (1 << PB2)
+
+    ; Configurar ADC:
+    ; Seleciona canal ADC0, AVcc como referência
+    ldi r16, (1<<REFS0)
+    sts ADMUX, r16
+
+    ; Habilita ADC, define prescaler para 128 (16MHz/128 = 125kHz)
+    ldi r16, (1<<ADEN) | (1<<ADPS2) | (1<<ADPS1) | (1<<ADPS0)
+    sts ADCSRA, r16
+
+MAIN_LOOP:
+    ; Inicia a conversão ADC
+    lds r16, ADCSRA
+    ori r16, (1<<ADSC)
+    sts ADCSRA, r16
+
+WAIT_ADC:
+    ; Aguarda fim da conversão
+    lds r16, ADCSRA
+    sbrs r16, ADIF
+    rjmp WAIT_ADC
+
+    ; Limpa flag ADIF
+    lds r16, ADCSRA
+    ori r16, (1<<ADIF)
+    sts ADCSRA, r16
+
+    ; Lê o valor do ADC (10 bits em ADCL/ADCH)
+    lds r18, ADCL
+    lds r19, ADCH
+
+    ; Comparar com 500 (0x01F4)
+    ; ADC >= 500 --> não toca buzzer
+    ; ADC <  500 --> toca buzzer
+
+    ; 500 em hex: 0x01F4 (low=0xF4, high=0x01)
+    ldi r20, 0xF4  ; valor baixo
+    ldi r21, 0x01  ; valor alto
+
+    ; Comparar r19:r18 com 0x01F4
+    cp r18, r20        ; compara low bytes
+    cpc r19, r21       ; compara com carry os high bytes
+    brcc NO_BUZZER     ; Se maior ou igual, não toca
+
+BUZZER_ON:
+    sbi PORTB, PB2     ; PORTB |= (1 << PB2)
+    rcall DELAY_500MS
+    cbi PORTB, PB2     ; PORTB &= ~(1 << PB2)
+
+NO_BUZZER:
+    rjmp MAIN_LOOP
+
+; ---------------------------
+; Delay de aproximadamente 500ms (16MHz clock)
+; Simples busy-wait loop (não muito preciso)
+; ---------------------------
+DELAY_500MS:
+    ldi r20, 5
+L1:
+    ldi r21, 255
+L2:
+    ldi r22, 255
+L3:
+    dec r22
+    brne L3
+    dec r21
+    brne L2
+    dec r20
+    brne L1
+    ret
