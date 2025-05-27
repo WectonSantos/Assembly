@@ -1,0 +1,38 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>C:\Users\Wecton\Desktop\projeto-yuri-final\projeto-yuri-final\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\Wecton\Desktop\projeto-yuri-final\projeto-yuri-final\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc</FILE>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328pdef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\Wecton\Desktop\projeto-yuri-final\projeto-yuri-final\Debug\projeto-yuri-final.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>projeto-yuri-final.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>projeto-yuri-final.map</FILE>
+  <FILE>projeto-yuri-final.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <RESET><FILE>C:\Users\Wecton\Desktop\projeto-yuri-final\projeto-yuri-final\main.asm</FILE><LINE>9</LINE></RESET>
+  <MAIN_LOOP><FILE>C:\Users\Wecton\Desktop\projeto-yuri-final\projeto-yuri-final\main.asm</FILE><LINE>62</LINE></MAIN_LOOP>
+  <WAIT_ADC_LDR1><FILE>C:\Users\Wecton\Desktop\projeto-yuri-final\projeto-yuri-final\main.asm</FILE><LINE>73</LINE></WAIT_ADC_LDR1>
+  <LDR1_BUZZER_OFF><FILE>C:\Users\Wecton\Desktop\projeto-yuri-final\projeto-yuri-final\main.asm</FILE><LINE>95</LINE></LDR1_BUZZER_OFF>
+  <LDR1_DONE><FILE>C:\Users\Wecton\Desktop\projeto-yuri-final\projeto-yuri-final\main.asm</FILE><LINE>99</LINE></LDR1_DONE>
+  <WAIT_ADC_LDR2><FILE>C:\Users\Wecton\Desktop\projeto-yuri-final\projeto-yuri-final\main.asm</FILE><LINE>111</LINE></WAIT_ADC_LDR2>
+  <LDR2_LED_OFF><FILE>C:\Users\Wecton\Desktop\projeto-yuri-final\projeto-yuri-final\main.asm</FILE><LINE>133</LINE></LDR2_LED_OFF>
+  <LDR2_DONE><FILE>C:\Users\Wecton\Desktop\projeto-yuri-final\projeto-yuri-final\main.asm</FILE><LINE>137</LINE></LDR2_DONE>
+  <WAIT_ADC_HW028><FILE>C:\Users\Wecton\Desktop\projeto-yuri-final\projeto-yuri-final\main.asm</FILE><LINE>149</LINE></WAIT_ADC_HW028>
+  <SERVO_SET_0><FILE>C:\Users\Wecton\Desktop\projeto-yuri-final\projeto-yuri-final\main.asm</FILE><LINE>173</LINE></SERVO_SET_0>
+  <SERVO_DONE><FILE>C:\Users\Wecton\Desktop\projeto-yuri-final\projeto-yuri-final\main.asm</FILE><LINE>179</LINE></SERVO_DONE>
+ </LABELS>
+</ASSEMBLER_INFO>
